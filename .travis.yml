@@ -1,0 +1,6 @@
+language: csharp
+solution: ECCUnofficial.sln
+mono: none
+dotnet: 3.1.200
+script:
+ - dotnet build -c Release -r linux-x64
