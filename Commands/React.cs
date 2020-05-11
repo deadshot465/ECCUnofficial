@@ -16,9 +16,9 @@ namespace ECCUnofficial.Commands
             LengthTooShort, LengthTooLong
         }
 
-        public React(HttpClient http) : base()
+        public React() : base()
         {
-            _http = http;
+            _http = new HttpClient();
         }
 
         [Command("react")]
