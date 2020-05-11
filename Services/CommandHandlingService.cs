@@ -105,13 +105,13 @@ namespace ECCUnofficial.Services
                     foreach (var userId in _persistence.RegisteredIds)
                     {
                         var user = _client.GetUser(userId);
-                        _ = user.SendMessageAsync($"チャンネル：{msg.Channel} - {msg.UserName}: {msg.Text}");
+                        _ = user.SendMessageAsync($"チャンネル：{msg.Channel} - {msg.UserName}: {msg.Text}\nタイムスタンプ：{msg.Timestamp}");
                     }
 
                     foreach (var channelId in _persistence.RegisteredChannels)
                     {
                         var channel = _client.GetChannel(channelId) as SocketTextChannel;
-                        _ = channel.SendMessageAsync($"チャンネル：{msg.Channel} - {msg.UserName}: {msg.Text}");
+                        _ = channel.SendMessageAsync($"チャンネル：{msg.Channel} - {msg.UserName}: {msg.Text}\nタイムスタンプ：{msg.Timestamp}");
                     }
                 }
             }
