@@ -104,12 +104,18 @@ namespace ECCUnofficial.Services
                 {
                     foreach (var userId in _persistence.RegisteredIds)
                     {
+                        if (_persistence.DisabledChannelAndIds["GO2A"]["Ids"].Contains(userId))
+                            continue;
+
                         var user = _client.GetUser(userId);
                         _ = user.SendMessageAsync($"チャンネル：{msg.Channel} - {msg.UserName}: {msg.Text}\nタイムスタンプ：{msg.Timestamp}");
                     }
 
                     foreach (var channelId in _persistence.RegisteredChannels)
                     {
+                        if (_persistence.DisabledChannelAndIds["GO2A"]["Channels"].Contains(channelId))
+                            continue;
+
                         var channel = _client.GetChannel(channelId) as SocketTextChannel;
                         _ = channel.SendMessageAsync($"チャンネル：{msg.Channel} - {msg.UserName}: {msg.Text}\nタイムスタンプ：{msg.Timestamp}");
                     }
