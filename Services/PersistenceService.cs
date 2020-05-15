@@ -40,6 +40,20 @@ namespace ECCUnofficial.Services
                 DisabledChannelAndIds = JsonSerializer
                     .Deserialize<Dictionary<string, Dictionary<string, HashSet<ulong>>>>(rawString);
             }
+
+            if (!DisabledChannelAndIds.ContainsKey("ECC"))
+            {
+                DisabledChannelAndIds.Add("ECC", new Dictionary<string, HashSet<ulong>>());
+                DisabledChannelAndIds["ECC"]["Ids"] = new HashSet<ulong>();
+                DisabledChannelAndIds["ECC"]["Channels"] = new HashSet<ulong>();
+            }
+
+            if (!DisabledChannelAndIds.ContainsKey("GO2A"))
+            {
+                DisabledChannelAndIds.Add("GO2A", new Dictionary<string, HashSet<ulong>>());
+                DisabledChannelAndIds["GO2A"]["Ids"] = new HashSet<ulong>();
+                DisabledChannelAndIds["GO2A"]["Channels"] = new HashSet<ulong>();
+            }
         }
 
         public async Task WriteToStorage()
